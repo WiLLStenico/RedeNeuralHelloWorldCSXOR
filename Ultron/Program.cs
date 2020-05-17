@@ -7,10 +7,10 @@ namespace Ultron
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            double[] input = { 2, 8 };
+            //double[] input = { 2, 8 };
             //new RedeNeural(2,2,1).FeedForward(input);
 
-            var RN = new RedeNeural(2, 3, 1);//.Train(input, input);
+            var RN = new RedeNeural(2, 2, 1);//.Train(input, input);
 
             //XOR Inputs
             double[][] inputs = new double[][]
@@ -34,12 +34,14 @@ namespace Ultron
             bool train = true;
             while (train)
             {
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < 100000; i++)
                 {
 
-                    var index = random.Next(0, 3);
-
+                    var index = random.Next(0, 4);
+                    //if(index!=2 && index != 1)
+//                    Console.WriteLine("############################################################################### Index " + index + " ###############################################################");
                     RN.Train(inputs[index], outputs[index]);
+  //                  RN.Train(inputs[3], outputs[3]);
                     //RN.Train(inputs[0], outputs[0]);
                     //RN.Train(inputs[3], outputs[3]);
 
@@ -55,16 +57,22 @@ namespace Ultron
 
                 Console.WriteLine("QUASE: " + prediction00[0, 0] + " <0.04 E 0.98 <" + prediction10[0, 0]);
 
+                for (int i = 0; i < 4; i++)
+                {
+                    var prediction = RN.predict(inputs[i]);
+                    Console.WriteLine("Index: " + i + " Inputs " + inputs[i][0] + " , " + inputs[i][1] + " Expected " + outputs[i][0] + " Result : " + prediction[0, 0]);
+                }
+
             }
+
+            Console.WriteLine("############################################################################");
 
             for (int i = 0; i < 4; i++)
             {
                 var prediction = RN.predict(inputs[i]);
-                Console.WriteLine("Index: " + i + " Result : " + prediction[0, 0]);
-
+                //Console.WriteLine("Index: " + i + " Result : " + prediction[0, 0]);
+                Console.WriteLine("Index: " + i + " Inputs " + inputs[i][0] + " , " + inputs[i][1] + " Expected " + outputs[i][0] + " Result : " + prediction[0, 0]);
             }
-
-
 
         }
     }

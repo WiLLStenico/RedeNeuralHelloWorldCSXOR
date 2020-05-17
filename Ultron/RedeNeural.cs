@@ -6,12 +6,10 @@ namespace Ultron
     {
 
         public double i_nodes { get; set; } //input_nodes
-
         public double h_nodes { get; set; } //hidden_nodes
         public double o_nodes { get; set; } //output_nodes   
         public Matrix bias_ih { get; set; } //bias of input to hidden
         public Matrix bias_ho { get; set; } //bias of hidden to output
-
         public Matrix weigth_ih { get; set; } //weights of input to hidden
         public Matrix weigth_ho { get; set; } //weights of input to hidden
 
@@ -53,12 +51,10 @@ namespace Ultron
 
             hidden = Matrix.Add(hidden, this.bias_ih.Data);//Adiciona o Bias
 
-
             int row = hidden.GetLength(0);
             int col = hidden.GetLength(1);
 
             double[,] result = new double[row, col];
-
 
             //Aplica funcao de ativação
             for (int i = 0; i < row; i++)
@@ -82,7 +78,7 @@ namespace Ultron
             {
                 for (int j = 0; j < col; j++)
                 {
-                    output[i, j] = (int)RedeNeural.Sigmoid(output[i, j]);
+                    output[i, j] = RedeNeural.Sigmoid(output[i, j]);
                 }
             }
 
@@ -213,13 +209,13 @@ namespace Ultron
             {
                 for (int j = 0; j < d_output.GetLength(1); j++)
                 {
-                    d_output[i, j] = RedeNeural.DSigmoid(d_output[i, j]);
+                    d_output[i, j] = RedeNeural.DSigmoid(output[i, j]);
                 }
             }
 
             var hidden_T = Matrix.Transpose(hidden);
 
-            var gradient = Matrix.Hadamard(output_error, d_output);
+            var gradient = Matrix.Hadamard(d_output, output_error);
             gradient = Matrix.EscalarMultiply(gradient, _learning_rate);
 
             //Adjust BIAS
@@ -249,7 +245,7 @@ namespace Ultron
 
             var input_T = Matrix.Transpose(input.Data);
 
-            var gradient_h = Matrix.Hadamard(hidden_error, d_hidden);
+            var gradient_h = Matrix.Hadamard(d_hidden, hidden_error);
             gradient_h = Matrix.EscalarMultiply(gradient_h, _learning_rate);
 
             //Adjust BIAS
