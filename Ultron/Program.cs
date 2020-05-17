@@ -7,39 +7,62 @@ namespace Ultron
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            int[] input = { 2, 8 };
+            double[] input = { 2, 8 };
             //new RedeNeural(2,2,1).FeedForward(input);
 
             var RN = new RedeNeural(2, 3, 1);//.Train(input, input);
 
-            int[][] inputs = new int[][]
+            //XOR Inputs
+            double[][] inputs = new double[][]
             {
-                new int[] { 1, 1 },
-                new int[] { 1, 0 },
-                new int[] { 0, 1 },
-                new int[] { 0, 0 }
-            };   
+                new double[] { 1, 1 },
+                new double[] { 1, 0 },
+                new double[] { 0, 1 },
+                new double[] { 0, 0 }
+            };
 
-             int[][] outputs = new int[][]
-            {
-                new int[] { 0 },
-                new int[] { 1 },
-                new int[] { 1 },
-                new int[] { 0 }
-            };            
-            
+            double[][] outputs = new double[][]
+           {
+                new double[] { 0 },
+                new double[] { 1 },
+                new double[] { 1 },
+                new double[] { 0 }
+           };
+
 
             var random = new Random();
-            for (int i = 0; i < 10000; i++)
+            bool train = true;
+            while (train)
             {
+                for (int i = 0; i < 10000; i++)
+                {
 
-                var index = random.Next(0, 3);
+                    var index = random.Next(0, 3);
 
-                RN.Train(inputs[index], outputs[index]);
+                    RN.Train(inputs[index], outputs[index]);
+                    //RN.Train(inputs[0], outputs[0]);
+                    //RN.Train(inputs[3], outputs[3]);
+
+                }
+
+                var prediction00 = RN.predict(inputs[3]); //0,0 -> 0
+                var prediction10 = RN.predict(inputs[1]); //1,0 -> 1
+                if (prediction00[0, 0] < 0.04 && prediction10[0, 0] > 0.98)
+                {
+                    train = false;
+                    Console.WriteLine("Terminou");
+                }
+
+                Console.WriteLine("QUASE: " + prediction00[0, 0] + " <0.04 E 0.98 <" + prediction10[0, 0]);
 
             }
 
-            RN.predict(inputs[0]);
+            for (int i = 0; i < 4; i++)
+            {
+                var prediction = RN.predict(inputs[i]);
+                Console.WriteLine("Index: " + i + " Result : " + prediction[0, 0]);
+
+            }
 
 
 

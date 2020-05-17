@@ -5,10 +5,10 @@ namespace Ultron
     public class Matrix
     {
 
-        public int[,] Data { get; set; }
+        public double[,] Data { get; set; }
         public Matrix(int rows, int cols)
         {
-            Data = new int[rows, cols];
+            Data = new double[rows, cols];
 
             var random = new Random();
 
@@ -16,18 +16,18 @@ namespace Ultron
             {
                 for (int col = 0; col < cols; col++)
                 {
-                    Data[row, col] = random.Next(0, 10);
+                    Data[row, col] = (Double)random.Next(0, 100000000)/100000000*2-1;
                 }
             }
 
         }
 
-        public Matrix(int[, ] data)
+        public Matrix(double[, ] data)
         {
             Data = data;
         }
 
-        public static Matrix arrayToMatryx(int[] input)
+        public static Matrix arrayToMatryx(double[] input)
         { //Entrada dos dados do usuario em Array e sera tranformada em uma matriz de UMA coluna
 
             var result = new Matrix(input.Length, 1);
@@ -41,13 +41,13 @@ namespace Ultron
 
         }
 
-        public static int[,] Add(int[,] a, int[,] b)
+        public static double[,] Add(double[,] a, double[,] b)
         {
 
             int row = a.GetLength(0);
             int col = a.GetLength(1);
 
-            int[,] result = new int[row, col];
+            double[,] result = new double[row, col];
 
             for (int i = 0; i < row; i++)
             {
@@ -59,13 +59,13 @@ namespace Ultron
             return result;
         }
 
-        public static int[,] Subtract(int[,] a, int[,] b)
+        public static double[,] Subtract(double[,] a, double[,] b)
         {
 
             int row = a.GetLength(0);
             int col = a.GetLength(1);
 
-            int[,] result = new int[row, col];
+            double[,] result = new double[row, col];
 
             for (int i = 0; i < row; i++)
             {
@@ -77,13 +77,13 @@ namespace Ultron
             return result;
         }
 
-        public static int[,] Hadamard(int[,] a, int[,] b)
+        public static double[,] Hadamard(double[,] a, double[,] b)
         {
 
             int row = a.GetLength(0);
             int col = a.GetLength(1);
 
-            int[,] result = new int[row, col];
+            double[,] result = new double[row, col];
 
             for (int i = 0; i < row; i++)
             {
@@ -95,25 +95,25 @@ namespace Ultron
             return result;
         }
 
-        public static int[,] EscalarMultiply(int[,] a, int escalar)
+        public static double[,] EscalarMultiply(double[,] a, double escalar)
         {
 
             int row = a.GetLength(0);
             int col = a.GetLength(1);
 
-            int[,] result = new int[row, col];
+            double[,] result = new double[row, col];
 
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++)
                 {
-                    result[i, j] = a[i, j] * escalar; //TODO: Mudar para double
+                    result[i, j] = a[i, j] * escalar; 
                 }
             }
             return result;
         }
 
-        public static int[,] Multiply(int[,] a, int[,] b)
+        public static double[,] Multiply(double[,] a, double[,] b)
         {
             //Se numero de colunas de A != de Linhas de B
             if (a.GetLength(1) != b.GetLength(0))
@@ -125,7 +125,7 @@ namespace Ultron
             int row = a.GetLength(0); //linhas de A
             int col = b.GetLength(1); //colunas de B
 
-            int[,] result = new int[row, col];
+            double[,] result = new double[row, col];
 
             for (int i = 0; i < row; i++)
             {
@@ -142,12 +142,12 @@ namespace Ultron
             return result;
         }
 
-        public static int[,] Transpose(int[,] matrix)
+        public static double[,] Transpose(double[,] matrix)
         {
             int w = matrix.GetLength(0);
             int h = matrix.GetLength(1);
 
-            int[,] result = new int[h, w];
+            double[,] result = new double[h, w];
 
             for (int i = 0; i < w; i++)
             {
@@ -158,6 +158,24 @@ namespace Ultron
             }
 
             return result;
+        }
+
+        public void toConsole(){
+
+        int row = Data.GetLength(0); //linhas de A
+            int col = Data.GetLength(1); //colunas de B
+
+            double[,] result = new double[row, col];
+
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < col; j++)
+                {
+                    Console.Write(Data[i,j]+",");
+                }
+                Console.WriteLine();
+            }
+
         }
     }
 }
