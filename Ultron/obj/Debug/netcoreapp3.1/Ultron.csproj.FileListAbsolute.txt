@@ -1,0 +1,13 @@
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\bin\Debug\netcoreapp3.1\Ultron.exe
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\bin\Debug\netcoreapp3.1\Ultron.deps.json
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\bin\Debug\netcoreapp3.1\Ultron.runtimeconfig.json
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\bin\Debug\netcoreapp3.1\Ultron.runtimeconfig.dev.json
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\bin\Debug\netcoreapp3.1\Ultron.dll
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\bin\Debug\netcoreapp3.1\Ultron.pdb
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\obj\Debug\netcoreapp3.1\Ultron.csprojAssemblyReference.cache
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\obj\Debug\netcoreapp3.1\Ultron.csproj.CoreCompileInputs.cache
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\obj\Debug\netcoreapp3.1\Ultron.AssemblyInfoInputs.cache
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\obj\Debug\netcoreapp3.1\Ultron.AssemblyInfo.cs
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\obj\Debug\netcoreapp3.1\Ultron.dll
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\obj\Debug\netcoreapp3.1\Ultron.pdb
+C:\Users\WiLL\Desktop\Repository\Ultron\Ultron\obj\Debug\netcoreapp3.1\Ultron.genruntimeconfig.cache
